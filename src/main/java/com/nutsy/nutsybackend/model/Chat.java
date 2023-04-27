@@ -1,18 +1,23 @@
 package com.nutsy.nutsybackend.model;
-import com.google.type.DateTime;
+import java.sql.Timestamp;
+
 
 public class Chat {
 
     private int chat_id;
     private String username;
     private String content;
-    private DateTime ts;
+    private Timestamp ts;
 
-    public Chat(int chat_id, String username, String content, DateTime ts) {
+    public Chat(int chat_id, String username, String content, Timestamp ts) {
         this.chat_id = chat_id;
         this.username = username;
         this.content = content;
         this.ts = ts;
+    }
+
+    public Chat() {
+
     }
 
     public int getChat_id() {
@@ -39,11 +44,11 @@ public class Chat {
         this.content = content;
     }
 
-    public DateTime getTs() {
+    public Timestamp getTs() {
         return ts;
     }
 
-    public void setTs(DateTime ts) {
+    public void setTs(Timestamp ts) {
         this.ts = ts;
     }
 }

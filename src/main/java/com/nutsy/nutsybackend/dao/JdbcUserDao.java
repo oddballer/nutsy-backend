@@ -73,12 +73,11 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public User create(User newUser) {
-        String insertUserSql = "INSERT INTO users (username,password_hash,role,name,address,city,state_code,zip) values (?,?,?,?,?,?,?,?) RETURNING user_id";
+        String insertUserSql = "INSERT INTO users (username,password_hash,role) values (?,?,?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(newUser.getPassword());
 
         int userId = jdbcTemplate.queryForObject(insertUserSql, int.class,
-                newUser.getUsername(), password_hash, newUser.getAuthoritiesString(), newUser.getName(), newUser.getAddress(),
-                newUser.getCity(), newUser.getStateCode(), newUser.getZIP());
+                newUser.getUsername(), password_hash, newUser.getAuthoritiesString());
         return getUserById(userId);
     }
 
@@ -88,11 +87,6 @@ public class JdbcUserDao implements UserDao {
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
-        user.setName(rs.getString("name"));
-        user.setAddress(rs.getString("address"));
-        user.setCity(rs.getString("city"));
-        user.setStateCode(rs.getString("state_code"));
-        user.setZIP(rs.getString("zip"));
         user.setActivated(true);
         return user;
     }

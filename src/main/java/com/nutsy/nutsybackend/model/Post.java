@@ -1,18 +1,35 @@
 package com.nutsy.nutsybackend.model;
-import com.google.type.DateTime;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Post {
 
     private int post_id;
     private String username;
     private String post_name;
-    private DateTime ts;
+    private Timestamp ts;
+    private List<PostItem> postItems = new ArrayList<>();
 
-    public Post(int post_id, String username, String post_name, DateTime ts) {
+    public Post(int post_id, String username, String post_name, Timestamp ts) {
         this.post_id = post_id;
         this.username = username;
         this.post_name = post_name;
         this.ts = ts;
+    }
+
+    public Post() {
+
+    }
+
+    public List<PostItem> getPostItems() {
+        return postItems;
+    }
+
+    public void setPostItems(List<PostItem> postItems) {
+        this.postItems = postItems;
     }
 
     public int getPost_id() {
@@ -39,11 +56,11 @@ public class Post {
         this.post_name = post_name;
     }
 
-    public DateTime getTs() {
+    public Timestamp getTs() {
         return ts;
     }
 
-    public void setTs(DateTime ts) {
+    public void setTs(Timestamp ts) {
         this.ts = ts;
     }
 }

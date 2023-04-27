@@ -16,11 +16,6 @@ public class User {
 
    private int id;
    private String username;
-   private String name;
-   private String address;
-   private String city;
-   private String stateCode;
-   private String ZIP;
    @JsonIgnore
    private String password;
    @JsonIgnore
@@ -35,11 +30,6 @@ public class User {
       this.username = username;
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
-      this.name = name;
-      this.address = address;
-      this.city = city;
-      this.stateCode = stateCode;
-      this.ZIP = ZIP;
       this.activated = true;
    }
 
@@ -107,45 +97,7 @@ public class User {
       }
    }
 
-   public String getName() {
-      return name;
-   }
 
-   public void setName(String name) {
-      this.name = name;
-   }
-
-   public String getAddress() {
-      return address;
-   }
-
-   public void setAddress(String address) {
-      this.address = address;
-   }
-
-   public String getCity() {
-      return city;
-   }
-
-   public void setCity(String city) {
-      this.city = city;
-   }
-
-   public String getStateCode() {
-      return stateCode;
-   }
-
-   public void setStateCode(String stateCode) {
-      this.stateCode = stateCode;
-   }
-
-   public String getZIP() {
-      return ZIP;
-   }
-
-   public void setZIP(String ZIP) {
-      this.ZIP = ZIP;
-   }
 
    @Override
    public boolean equals(Object o) {
@@ -156,11 +108,6 @@ public class User {
               activated == user.activated &&
               Objects.equals(username, user.username) &&
               Objects.equals(password, user.password) &&
-              Objects.equals(name, user.name) &&
-              Objects.equals(address, user.address) &&
-              Objects.equals(city, user.city) &&
-              Objects.equals(stateCode, user.stateCode) &&
-              Objects.equals(ZIP, user.ZIP) &&
               Objects.equals(authorities, user.authorities);
    }
 
@@ -174,11 +121,6 @@ public class User {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
-              ", name='" + name + '\'' +
-              ", address='" + address + '\'' +
-              ", city='" + city + '\'' +
-              ", state='" + stateCode + '\'' +
-              ", zip='" + ZIP + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
               '}';
