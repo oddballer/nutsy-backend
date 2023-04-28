@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/chat")
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class ChatController {
 
 private final ChatsDao chatsDao;
