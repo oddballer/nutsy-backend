@@ -10,7 +10,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-//@CrossOrigin
+@CrossOrigin
 @RequestMapping("/chat")
 //@PreAuthorize("isAuthenticated()")
 public class ChatController {
