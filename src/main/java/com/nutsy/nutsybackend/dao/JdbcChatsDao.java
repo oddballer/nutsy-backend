@@ -34,7 +34,7 @@ public class JdbcChatsDao implements ChatsDao{
     @Override
     public void insert(Chat chat, String username) {
         String sql = "INSERT INTO chats(username, content, ts) VALUES (?, ?, now())";
-        jdbcTemplate.update(sql, chat.getUsername(), chat.getContent());
+        jdbcTemplate.update(sql, username, chat.getContent());
 
     }
 

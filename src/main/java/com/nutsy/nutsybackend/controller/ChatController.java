@@ -10,7 +10,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/chat")
 //@PreAuthorize("isAuthenticated()")
 public class ChatController {
@@ -26,11 +26,12 @@ private final ChatsDao chatsDao;
         return chatsDao.getAll();
     }
 
-    @RequestMapping(path = "/new", method = RequestMethod.POST)
+
 //    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
 //        chatsDao.insert(chat, principal.getName());
-    public List<Chat> addChat(@RequestBody Chat chat){
+    @RequestMapping(path = "/new", method = RequestMethod.POST)
+    public void addChat(@RequestBody Chat chat){
         chatsDao.insert(chat, chat.getUsername());
-        return chatsDao.getAll();
+//        return chatsDao.getAll();
     }
 }
