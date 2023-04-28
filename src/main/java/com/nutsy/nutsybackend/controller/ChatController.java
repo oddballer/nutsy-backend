@@ -27,8 +27,10 @@ private final ChatsDao chatsDao;
     }
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
-    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
-        chatsDao.insert(chat, principal.getName());
+//    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
+//        chatsDao.insert(chat, principal.getName());
+    public List<Chat> addChat(@RequestBody Chat chat){
+        chatsDao.insert(chat, chat.getUsername());
         return chatsDao.getAll();
     }
 }
