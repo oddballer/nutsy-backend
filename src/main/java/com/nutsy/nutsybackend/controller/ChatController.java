@@ -2,7 +2,6 @@ package com.nutsy.nutsybackend.controller;
 
 import com.nutsy.nutsybackend.dao.ChatsDao;
 import com.nutsy.nutsybackend.model.Chat;
-import com.nutsy.nutsybackend.model.Post;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +29,8 @@ private final ChatsDao chatsDao;
 //    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
 //        chatsDao.insert(chat, principal.getName());
     @RequestMapping(path = "/new", method = RequestMethod.POST)
-    public void addChat(@RequestBody Chat chat){
+    public List<Chat> addChat(@RequestBody Chat chat){
         chatsDao.insert(chat, chat.getUsername());
-//        return chatsDao.getAll();
+        return chatsDao.getAll();
     }
 }
