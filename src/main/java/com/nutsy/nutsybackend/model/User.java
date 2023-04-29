@@ -25,7 +25,7 @@ public class User {
    public User() { }
 
 
-   public User(int id, String username, String password, String authorities, String name, String address, String city, String stateCode, String ZIP) {
+   public User(int id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
@@ -33,8 +33,8 @@ public class User {
       this.activated = true;
    }
 
-   public User(String username, String password, String authorities, String name, String address, String city, String stateCode, String ZIP) {
-      this(0, username, password, authorities, name, address, city, stateCode, ZIP);
+   public User(String username, String password, String authorities) {
+      this(0, username, password, authorities);
    }
 
    public int getId() {

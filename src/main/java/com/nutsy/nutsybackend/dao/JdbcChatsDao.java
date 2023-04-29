@@ -21,7 +21,7 @@ public class JdbcChatsDao implements ChatsDao{
     @Override
     public List<Chat> getAll() {
         List<Chat> chats = new ArrayList<>();
-        String sql = "SELECT * FROM chats";
+        String sql = "SELECT * FROM chats ORDER BY chat_id DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){

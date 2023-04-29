@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/chat")
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 public class ChatController {
 
 private final ChatsDao chatsDao;
@@ -25,12 +25,11 @@ private final ChatsDao chatsDao;
         return chatsDao.getAll();
     }
 
-
-//    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
-//        chatsDao.insert(chat, principal.getName());
     @RequestMapping(path = "/new", method = RequestMethod.POST)
-    public List<Chat> addChat(@RequestBody Chat chat){
-        chatsDao.insert(chat, chat.getUsername());
+    public List<Chat> addChat(@RequestBody Chat chat, Principal principal){
+        chatsDao.insert(chat, principal.getName());
+//    public List<Chat> addChat(@RequestBody Chat chat){
+//        chatsDao.insert(chat, chat.getUsername());
         return chatsDao.getAll();
     }
 }
